@@ -52,3 +52,18 @@ $REPO_DIR
 │   │   └── video_frames
 ```
 
+## ⚠️ Terms of use
+* This model cannot be used for commercial purposes. It has been created for research purposes only.
+* This is not an official ByteDance product.
+
+## BibTeX
+
+```
+@article{athar2024vicas,
+author = {Ali Athar, Xueqing Deng, Liang-Chieh Chen},
+title = {ViCaS: A Dataset for Combining Holistic and Pixel-level Video Understanding using Captions with Grounded Segmentation},
+journal = {CVPR},
+year = {2025}
+}
+```
+
