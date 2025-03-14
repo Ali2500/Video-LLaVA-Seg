@@ -66,6 +66,8 @@ If you're on a multi-GPU setup then you can parallelize the inference by running
 bash scripts/infer.sh -i /path/to/model/directory -o /path/to/output --dataset_split {val,test}
 ```
 
+To evaluate the results, refer to the [instructions](https://github.com/Ali2500/ViCaS/tree/main?tab=readme-ov-file#benchmark-evaluation) in the main repo.
+
 ## Training
 
 We provide the pretrained model which has been optimized for video captioning on a subset of WebVid10M and Panda70M on [HuggingFace](https://huggingface.co/fun-research/Video-LLaVA-Seg-Pretrain). To finetune this model on ViCaS for captioning and LG-VIS, run the following training script:
