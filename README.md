@@ -66,6 +66,16 @@ If you're on a multi-GPU setup then you can parallelize the inference by running
 bash scripts/infer.sh -i /path/to/model/directory -o /path/to/output --dataset_split {val,test}
 ```
 
+## Training
+
+We provide the pretrained model which has been optimized for video captioning on a subset of WebVid10M and Panda70M on [HuggingFace](https://huggingface.co/fun-research/Video-LLaVA-Seg-Pretrain). To finetune this model on ViCaS for captioning and LG-VIS, run the following training script:
+
+```bash
+bash scripts/train/llama3/stage3_with_seg.sh --output_dir /path/to/output/directory --restore_weights /path/to/pretrained/model
+```
+
+Before executing it, please fill out some of the variables in this script according to your setup (number of GPUs, nodes, rdzv_endpoint, etc.). Our hardware setup involves 4 nodes, each with 8 Nvidia A100 (80G) GPUs (i.e. total 32 GPUs).
+
 ## ⚠️ Terms of use
 * This model cannot be used for commercial purposes. It has been created for research purposes only.
 * This is not an official ByteDance product.
