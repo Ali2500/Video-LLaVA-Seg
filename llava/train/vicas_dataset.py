@@ -126,19 +126,6 @@ class ViCaSDataset(Dataset):
             pad_samples = random.choices(samples_referral, k=n_pad)
             samples_referral.extend(pad_samples)
 
-        # if data_args.use_caption_only_annotations and not data_args.exclude_captions:
-        #     # use videos that have no mask labels yet (captions only)
-        #     caption_only_jsons = self.get_caption_only_jsons(samples_caption, data_args)
-        #     dist_utils.print_once(f"Using {len(caption_only_jsons)} caption-only videos")
-
-        #     for f in caption_only_jsons:
-        #         with open(f, 'r') as fh:
-        #             content = json.load(fh)
-
-        #         num_reworded_captions = len(content["reworded_en_captions"]) # len(content.get("reworded_en_captions", []))
-        #         samples_caption.append((f, 'caption', -1))  # -1 denotes original caption
-        #         samples_caption.extend([(f, 'caption', j) for j in range(num_reworded_captions)])
-
         self.samples = samples_caption + samples_referral
 
         dist_utils.print_once(f"[ViCaS] Video Caption samples: {len(samples_caption)}")
@@ -155,25 +142,6 @@ class ViCaSDataset(Dataset):
 
     def set_num_epochs(self, n: int):
         self.n_epochs = n
-
-    # def get_caption_only_jsons(self, current_samples, data_args):
-    #     json_paths = glob(osp.join(Paths.our_dataset_caption_only_dir(), "*.json"))
-    #     json_paths = {int(osp.split(p)[-1].replace(".json", "")): p for p in json_paths}
-
-    #     # dont duplicate samples we already have
-    #     disallowed_video_ids = set([int(osp.split(sample[0])[-1].replace(".json", "")) for sample in current_samples])
-
-    #     # ensure no validation or test set samples contaiminate the training set
-    #     with open(Paths.vicas_split_json(version=data_args.vicas_version, split="val"), 'r') as fh:
-    #         disallowed_video_ids = disallowed_video_ids.union(set(json.load(fh)))
-
-    #     try:
-    #         with open(Paths.vicas_split_json(version=data_args.vicas_version, split="test"), 'r') as fh:
-    #             disallowed_video_ids = disallowed_video_ids.union(set(json.load(fh)))
-    #     except ValueError as _:
-    #         pass
-
-    #     return [p for video_id, p in json_paths.items() if video_id not in disallowed_video_ids]
 
     def init_internal_dataset_readers(self, local_pid, local_size):
         self.internal_dataset.init_reader(local_pid, local_size)
