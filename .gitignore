@@ -1,0 +1,10 @@
+**.pyc
+**.so
+**.swp
+**.old
+.nfs*
+.vscode
+wandb
+datasets
+scripts_internal
+llava/internal
