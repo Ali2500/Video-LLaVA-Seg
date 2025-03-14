@@ -52,6 +52,20 @@ $REPO_DIR
 │   │   └── video_frames
 ```
 
+## Inference
+
+Run the following command:
+
+```bash
+python llava/inference/main.py -i /path/to/model/directory -o /path/to/output --dataset_split {val,test}
+```
+
+If you're on a multi-GPU setup then you can parallelize the inference by running the inference script with the same arguments:
+
+```bash
+bash scripts/infer.sh -i /path/to/model/directory -o /path/to/output --dataset_split {val,test}
+```
+
 ## ⚠️ Terms of use
 * This model cannot be used for commercial purposes. It has been created for research purposes only.
 * This is not an official ByteDance product.
